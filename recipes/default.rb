@@ -6,20 +6,16 @@ execute "install nvm" do
   action :run
 end
 
-execute "reload bash" do
-  user "root"
-  command "source ~/.bash_profile"
-  action :run
-end
-
 execute "install nodejs" do
   user "root"
+  command "source /root/.bash_profile"
   command "nvm install #{node.nvm.nodejs_version}"
   action :run
 end
 
 execute "use nodejs" do
   user "root"
+  command "source /root/.bash_profile"
   command "nvm use #{node.nvm.nodejs_version}"
   action :run
 end
